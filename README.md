@@ -34,3 +34,11 @@ ClientAliveInterval 300
 ClientAliveCountMax 0
 AllowUsers yourusername
 ```
+Check the config (if it returns nothing its good) 
+```
+sudo sshd -t
+```
+if its good restart the service
+```
+sudo systemctl restart sshd
+```
