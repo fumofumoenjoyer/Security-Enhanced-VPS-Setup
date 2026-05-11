@@ -12,10 +12,25 @@ useradd yourusername
 passwd yourusername
 usermod -a -G wheel,users,yourusername yourusername
 ```
-## Create and Add your SSH keys to the VPS
+## SSH Config
+### Create and Add your SSH keys to the VPS
 ```
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 ```
 ssh-copy-id -i ~/.ssh/keyname.pub yourusername@your-vps-ip
+```
+### Log into your vps with the key
+```
+ssh -i /home/fumo/.ssh/keyname 'yourusername@your-vps-ip'  
+```
+### Create a config file to override ssh settings
+```/etc/ssh/sshd_config.d/99-hardened.conf```
+```
+PasswordAuthentication no
+PermitRootLogin no
+MaxAuthTries 3
+ClientAliveInterval 300
+ClientAliveCountMax 0
+AllowUsers yourusername
 ```
