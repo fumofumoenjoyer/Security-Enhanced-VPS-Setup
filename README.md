@@ -36,12 +36,11 @@ sudo systemctl enable --now firewalld
 ```
 
 ### Create a config file to override ssh settings
-```/etc/ssh/sshd_config.d/99-hardened.conf``` (change the port if you want)
+```/etc/ssh/sshd_config.d/99-hardened.conf```
 ```
 PasswordAuthentication no
 PubkeyAuthentication yes
 PermitRootLogin no
-Port 49152
 MaxAuthTries 3
 ClientAliveInterval 300
 ClientAliveCountMax 0
@@ -51,21 +50,17 @@ Check the config (if it returns nothing its good)
 ```
 sudo sshd -t
 ```
-Tell SELinux about the new port
-```
-semanage port -l | grep ssh
-```
-```
-sudo semanage port -a -t ssh_port_t -p tcp 49152
-```
-(Note: If ```semanage``` is not found, install it via ```sudo dnf install policycoreutils-python-utils```)
-add the port to the firewall
-```
-sudo firewall-cmd --permanent --add-port=49152/tcp
-sudo firewall-cmd --reload
-```
-
 If everything is good restart the service
 ```
 sudo systemctl restart sshd
 ```
+## Install crowdsec
+```
+curl -s https://install.crowdsec.net | sudo sh
+sudo dnf install crowdsec crowdsec-firewall-bouncer-iptables -y
+```
+```
+sudo systemctl enable --now crowdsec-firewall-bouncer
+sudo systemctl reload crowdsec
+```
+
