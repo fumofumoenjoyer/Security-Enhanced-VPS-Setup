@@ -24,6 +24,17 @@ ssh-copy-id -i ~/.ssh/keyname.pub yourusername@your-vps-ip
 ```
 ssh -i /home/fumo/.ssh/keyname 'yourusername@your-vps-ip'  
 ```
+### Update and install stuff
+This is what i usually install on mine but you definitely need ```firewalld```
+```
+sudo dnf update -y
+sudo dnf install epel-release firewalld git waypipe -y
+```
+enable the firewall
+```
+sudo systemctl enable --now firewalld
+```
+
 ### Create a config file to override ssh settings
 ```/etc/ssh/sshd_config.d/99-hardened.conf``` (change the port if you want)
 ```
@@ -48,7 +59,11 @@ semanage port -l | grep ssh
 sudo semanage port -a -t ssh_port_t -p tcp 49152
 ```
 (Note: If ```semanage``` is not found, install it via ```sudo dnf install policycoreutils-python-utils```)
-
+add the port to the firewall
+```
+sudo firewall-cmd --permanent --add-port=49152/tcp
+sudo firewall-cmd --reload
+```
 
 If everything is good restart the service
 ```
