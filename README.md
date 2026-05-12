@@ -54,13 +54,21 @@ If everything is good restart the service
 ```
 sudo systemctl restart sshd
 ```
-## Install crowdsec
+## Install fail2ban
 ```
-curl -s https://install.crowdsec.net | sudo sh
-sudo dnf install crowdsec crowdsec-firewall-bouncer-iptables -y
+sudo dnf install fail2ban -y
+```
+```/etc/fail2ban/jail.local```
+```
+[sshd]
+enabled = true
+port = 22
+maxretry = 3
+bantime = 3600
+findtime = 600
+backend = systemd
 ```
 ```
-sudo systemctl enable --now crowdsec-firewall-bouncer
-sudo systemctl reload crowdsec
+sudo systemctl enable --now fail2ban
+sudo fail2ban-client status sshd
 ```
-
