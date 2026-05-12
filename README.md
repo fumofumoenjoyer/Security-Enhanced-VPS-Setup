@@ -34,6 +34,12 @@ enable the firewall
 ```
 sudo systemctl enable --now firewalld
 ```
+Disable cockpit
+```
+sudo firewall-cmd --permanent --remove-service=cockpit
+sudo firewall-cmd --permanent --add-service=ssh
+sudo firewall-cmd --reload
+```
 
 ### Create a config file to override ssh settings
 ```/etc/ssh/sshd_config.d/99-hardened.conf```
