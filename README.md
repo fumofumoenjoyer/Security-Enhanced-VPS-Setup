@@ -21,7 +21,7 @@ ssh-copy-id -i ~/.ssh/keyname.pub yourusername@your-vps-ip
 ```
 ### Log into your vps with the key
 ```
-ssh -i /home/fumo/.ssh/keyname 'yourusername@your-vps-ip'  
+ssh -i ~/.ssh/keyname 'yourusername@your-vps-ip'  
 ```
 ### Update and install stuff
 This is what i usually install on mine but you definitely need ```firewalld```
