@@ -5,7 +5,7 @@ Security Enhanced VPS Setup (SEVPSS)
 ssh root@your-vps-ip
 ```
 ## Create an user with sudo privileges
-Replace fumo with the name of the user you want
+Replace yourusername with the name of the user you want
 ```
 useradd yourusername
 passwd yourusername
