@@ -1,7 +1,6 @@
 # Security-Enhanced-VPS-Setup
 Security Enhanced VPS Setup (SEVPSS)
 ## Log into your fresh VPS as root
-Change the IP for the one you have
 ```
 ssh root@your-vps-ip
 ```
