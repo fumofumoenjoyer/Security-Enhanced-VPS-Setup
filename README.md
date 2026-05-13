@@ -81,5 +81,5 @@ sudo fail2ban-client status sshd
 ```
 ## Optimized ssh command with waypipe and cockpit exposing
 ```
-waypipe -c lz4  ssh -i /home/fumo/.ssh/keyname -L 9090:localhost:9090 yourusername@your-vps-ip
+waypipe -c lz4  ssh -i ~/.ssh/keyname -L 9090:localhost:9090 yourusername@your-vps-ip
 ```
