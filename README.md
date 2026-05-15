@@ -28,7 +28,7 @@ This is what i usually install on mine but you definitely need ```firewalld```
 ```
 sudo dnf update -y
 sudo dnf install epel-release -y
-sudo dnf install -y cockpit podman cockpit-podman podman-compose rclone fuse3 nano firewalld git zsh flatpak waypipe fastfetch
+sudo dnf install -y cockpit podman cockpit-podman podman-compose rclone fuse3 nano firewalld git zsh flatpak waypipe fastfetch tmux
 sudo dnf install kernel-modules-extra-$(uname -r) -y
 ```
 enable the firewall
