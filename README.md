@@ -83,3 +83,8 @@ sudo fail2ban-client status sshd
 ```
 waypipe -c lz4  ssh -i ~/.ssh/keyname -L 9090:localhost:9090 yourusername@your-vps-ip
 ```
+
+## sshuttle
+```
+sshuttle --dns -r user@your-vps-ip 0/0 --ssh-cmd 'ssh -i /path/to/key.pem'
+```
